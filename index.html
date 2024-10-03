@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./styles.css">
+    <title>tienda</title>
+</head>
+<body>
+    <section id="mainForm">
+        <h3>La Tienda</h3>
+        <table id="mainForm_tabla">
+            <tr>
+                <th>Cedula</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Monto a pagar</th>
+            </tr>
+        </table>
+        <h5>Artículo que se vendió más: <span id="mainForm_lblProductoMayorVenta">?</span></h5>
+        <h5>Se vendió un total de: $<span id="mainForm_lblMontoTotal">?</span></h5>
+        <button id="mainForm_btAgregarCliente">Agregar cliente</button>
+    </section>
+
+    <section id="clienteForm">
+        <h3>Datos del cliente</h3>
+        <input type="text" id="clienteForm_inCedula" placeholder="Cedula"></input>
+        <input type="text" id="clienteForm_inCodProducto" placeholder="Código producto"></input>
+        <input type="text" id="clienteForm_inCantidad" placeholder="Cantidad producto"></input>
+        <button id="clienteForm_btAceptar">Aceptar</button>
+     </section>
+
+</body>
+<script type="module">
+    import Cl_controlador from "./JS/Cl_controlador.js";
+    new Cl_controlador();
+</script>
+</html>
