@@ -1,8 +1,11 @@
 export default class Cl_mCliente{
-    constructor({cedula, codProducto, cantidad}){
+    constructor({cedula, codProducto, cantidad, productoA, productoB, productoC}){
         this.cedula = cedula;
         this.codProducto = codProducto;
         this.cantidad = cantidad;
+        this.productoA = productoA;
+        this.productoB = productoB;
+        this.productoC = productoC; 
     }
     set cedula(c){
      this._cedula = c;
@@ -22,13 +25,32 @@ export default class Cl_mCliente{
     get cantidad(){
         return this._cantidad;
     }
+    set productoA(pA){
+        this._productoA = +pA;
+    }
+    get productoA(){
+        return this._productoA;
+    }
+    set productoB(pB){
+        this._productoB= +pB;
+    }
+    get productoB(){
+        return this._productoB;
+    }
+    set productoC(pC){
+        this._productoC = +pC;
+    }
+    get productoC(){
+        return this._productoC;
+    }
     calcMontoPagar() {
         if (this.codProducto === "A")
-            return 10 * this.cantidad;
+            return this.cantidad * this.productoA;
         else if(this.codProducto === "B")
-            return 5 * this.cantidad;
+            return this.cantidad * this.productoB;
         else
-            return 20 * this.cantidad;
+            return this.cantidad * this.productoC;
     }
+   
     
 }

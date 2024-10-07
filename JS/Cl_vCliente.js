@@ -6,11 +6,11 @@ export default class Cl_vCliente {
         this.inCantidad = document.getElementById("clienteForm_inCantidad");
         this.btAceptar = document.getElementById("clienteForm_btAceptar");
         this.btAceptar.onclick = () => 
-            controlador.agregarCliente ({
-                cedula: this.inCedula.value,
-                codProducto: this.inCodProducto.value,
-                cantidad: this.inCantidad.value
-            });
+            controlador.agregarCliente(
+                this.inCedula.value,
+                this.inCodProducto.value,
+                this.inCantidad.value
+            );
         this.ocultar();
     }
 

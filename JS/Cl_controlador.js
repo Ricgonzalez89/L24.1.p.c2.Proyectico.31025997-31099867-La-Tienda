@@ -5,11 +5,14 @@ import Cl_vTienda from "./Cl_vTienda.js";
 
 export default class Cl_controlador {
     constructor () {
-        this.mTienda = new Cl_mTienda();
+         let precioA = prompt ('Ingrese el precio del producto A');
+         let precioB = prompt ('Ingrese el precio del producto B');
+         let precioC = prompt ('Ingrese el precio del producto C');
+        this.mTienda = new Cl_mTienda({precioA, precioB, precioC});
         this.vCliente = new Cl_vCliente(this);
         this.vTienda = new Cl_vTienda(this);
     }
-
+   
     mostrarVistaCliente () {
         this.vCliente.mostrar();
         this.vTienda.ocultar();
@@ -20,8 +23,15 @@ export default class Cl_controlador {
         this.vTienda.mostrar();
     }
 
-    agregarCliente ({cedula, codProducto, cantidad}) {
-        let cliente = new Cl_mCliente({cedula, codProducto, cantidad});
+    agregarCliente (cedula, codProducto, cantidad) {
+        let cliente = new Cl_mCliente({
+            cedula: cedula, 
+            codProducto: codProducto, 
+            cantidad: cantidad,
+            productoA: this.mTienda.productoA,
+            productoB: this.mTienda.productoB,
+            productoC: this.mTienda.productoC
+        });
         this.mTienda.procesarCliente(cliente);
         this.vTienda.reportarCliente({
             cedula: cliente.cedula,

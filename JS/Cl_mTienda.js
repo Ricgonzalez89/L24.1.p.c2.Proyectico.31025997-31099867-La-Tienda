@@ -1,9 +1,30 @@
 export default class Cl_mTienda{
-    constructor(){
+    constructor({precioA, precioB, precioC}){
         this.acMontoTotal = 0.0;
         this.acCantA = 0.0;
         this.acCantB = 0.0;
         this.acCantC = 0.0;
+        this.productoA = precioA;
+        this.productoB = precioB;
+        this.productoC = precioC;
+    }
+    set productoA(pA) {
+        this._productoA = +pA;
+    }
+    get productoA() {
+        return this._productoA;
+    }
+    set productoB(pB) {
+        this._productoB = +pB;
+    }
+    get productoB() {
+        return this._productoB;
+    }
+    set productoC(pC){
+        this._productoC = +pC;
+    }
+    get productoC(){
+        return this._productoC;
     }
     procesarCliente(c){
         this.acMontoTotal += c.calcMontoPagar();
