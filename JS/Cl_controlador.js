@@ -1,14 +1,15 @@
 import Cl_mCliente from "./Cl_mCliente.js";
 import Cl_mTienda from "./Cl_mTienda.js";
+import Cl_mComplemento from "./Cl_mComplemento.js";
 import Cl_vCliente from "./Cl_vCliente.js";
 import Cl_vTienda from "./Cl_vTienda.js";
+import Cl_vComplemento from "./Cl_vComplemento.js";
 
 export default class Cl_controlador {
     constructor () {
-         let precioA = prompt ('Ingrese el precio del producto A');
-         let precioB = prompt ('Ingrese el precio del producto B');
-         let precioC = prompt ('Ingrese el precio del producto C');
-        this.mTienda = new Cl_mTienda({precioA, precioB, precioC});
+        this.vComplemento = new Cl_vComplemento(this);
+        this.mComplemento = null;
+        this.mTienda = null;
         this.vCliente = new Cl_vCliente(this);
         this.vTienda = new Cl_vTienda(this);
     }
@@ -28,9 +29,9 @@ export default class Cl_controlador {
             cedula: cedula, 
             codProducto: codProducto, 
             cantidad: cantidad,
-            productoA: this.mTienda.productoA,
-            productoB: this.mTienda.productoB,
-            productoC: this.mTienda.productoC
+            productoA: this.mComplemento.precioA,
+            productoB: this.mComplemento.precioB,
+            productoC: this.mComplemento.precioC
         });
         this.mTienda.procesarCliente(cliente);
         this.vTienda.reportarCliente({
@@ -41,6 +42,17 @@ export default class Cl_controlador {
             acMontoTotal: this.mTienda.devolverMontoTotal().toFixed(2),
             productoMayorVenta: this.mTienda.productoMayorVenta()
         });
+        this.mostrarVistaTienda();
+    }
+
+    agregarPrecio({proA, proB, proC}) {
+        this.mComplemento = new Cl_mComplemento({proA, proB, proC});
+        this.mTienda = new Cl_mTienda({
+            precioA: this.mComplemento.precioA, 
+            precioB: this.mComplemento.precioB, 
+            precioC: this.mComplemento.precioC
+        });
+        this.vComplemento.ocultar();
         this.mostrarVistaTienda();
     }
 }

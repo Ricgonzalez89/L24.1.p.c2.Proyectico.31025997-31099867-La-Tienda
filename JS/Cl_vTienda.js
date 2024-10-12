@@ -6,6 +6,7 @@ export default class Cl_vTienda {
     this.lblProductoMayorVenta = document.getElementById("mainForm_lblProductoMayorVenta");
     this.lblMontoTotal = document.getElementById("mainForm_lblMontoTotal");
     this.btAgregarCliente.onclick = () => controlador.mostrarVistaCliente();
+    this.ocultar();
     }
     mostrar() {
     this.vista.hidden = false;
